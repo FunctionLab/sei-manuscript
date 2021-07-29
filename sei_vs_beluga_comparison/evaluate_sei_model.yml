@@ -1,0 +1,39 @@
+---
+ops: [evaluate]
+model: {
+    path: ../resources/sei.py,
+    class: Sei,
+    class_args: {
+        sequence_length: 4096,
+        n_genomic_features: 21907,
+    },
+    non_strand_specific: mean
+}
+sampler: !obj:selene_sdk.samplers.file_samplers.MatFileSampler {
+    filepath: ./sei_data/sei.hg19.test_holdout.seqs.h5,
+    sequence_key: sequences,
+    targets_key: targets,
+    sequence_batch_axis: 0,
+    sequence_alphabet_axis: 2,
+    targets_batch_axis: 0,
+    shuffle: False
+}
+evaluate_model: !obj:selene_sdk.EvaluateModel {
+    batch_size: 128,
+    features: !obj:selene_sdk.utils.load_features_list {
+        input_path: ../resources/sei_chromatin_profiles.txt
+    },
+    use_features_ord: !obj:selene_sdk.utils.load_features_list {
+        input_path: ./sei_data/deepsea_beluga/chromatin_profiles.txt
+    },
+    use_cuda: True, 
+    n_test_samples: 227458,
+    report_gt_feature_n_positives: 25,
+    metrics: {
+        roc_auc: !import sklearn.metrics.roc_auc_score,
+    },
+    trained_model_path: ../resources/sei.pth,
+    output_dir: ./sei_data/sei_evaluation
+}
+random_seed: 1447
+...

@@ -1,0 +1,16 @@
+h5py
+matplotlib
+nmslib
+numpy
+opentsne
+pandas
+pytabix
+pytorch
+rpy2
+scikit-learn
+scipy
+seaborn
+selene-sdk
+statsmodels
+umap-learn
+

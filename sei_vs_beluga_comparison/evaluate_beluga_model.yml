@@ -1,0 +1,30 @@
+---
+ops: [evaluate]
+model: {
+    path: ./sei_data/deepsea_beluga/deepsea_beluga.py,
+    class: Beluga,
+    class_args: {},
+    non_strand_specific: mean
+}
+sampler: !obj:selene_sdk.samplers.file_samplers.MatFileSampler {
+    filepath: ./sei_data/test.2002.mat.subset,
+    sequence_key: testxdata,
+    targets_key: testdata,
+    sequence_batch_axis: 2,
+    sequence_alphabet_axis: 1,
+    targets_batch_axis: 1,
+    shuffle: False
+}
+evaluate_model: !obj:selene_sdk.EvaluateModel {
+    batch_size: 128,
+    features: !obj:selene_sdk.utils.load_features_list {
+        input_path: ./sei_data/deepsea_beluga/chromatin_profiles.txt 
+    },
+    use_cuda: True, 
+    n_test_samples: 227512,
+    report_gt_feature_n_positives: 25,
+    trained_model_path: ./sei_data/deepsea_beluga/deepsea_beluga.pth,
+    output_dir: ./sei_data/beluga_evaluation 
+}
+random_seed: 1447
+...
