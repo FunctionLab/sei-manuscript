@@ -41,4 +41,4 @@ The directories correspond to the following figures/analyses:
 - `sei_vs_beluga_comparison`: Model performance for Sei and DeepSEA Beluga models on the overlapping set of 2,002 chromatin profiles (Supp Fig 4)
 
 ## Help
-Please post in the Github issues or e-mail [Kathy Chen](chen.kathleenm@gmail.com) with any questions about the repository, requests for more data, additional information about the results, etc.  
+Please post in the Github issues or e-mail Kathy Chen (chen.kathleenm@gmail.com) with any questions about the repository, requests for more data, additional information about the results, etc.  
