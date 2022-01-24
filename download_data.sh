@@ -20,8 +20,12 @@ tar -xzvf resources.tar.gz
 # wget https://sei-files.s3.amazonaws.com/eQTL_effect_size.tar.gz
 # tar -xzvf eQTL_effect_sizes.tar.gz
 
-# 39GB .tar.gz, 134GB decompressed
+# 432MB .tar.gz
 # wget https://sei-files.s3.amazonaws.com/evolutionary_constraints.tar.gz
+# tar -xzvf evolutionary_constraints.tar.gz
+
+# 39GB .tar.gz, 134GB decompressed
+# wget https://sei-files.s3.amazonaws.com/gwas_ldsr.tar.gz
 # tar -xzvf gwas_ldsr.tar.gz
 
 # 622KB .tar.gz, 5.6MB decompressed

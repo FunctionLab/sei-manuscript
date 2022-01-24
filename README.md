@@ -9,11 +9,12 @@ We have organized the repository by analysis. For example, `enrichment_heatmaps`
 This code has been tested on Python 3.6, and includes a number of Python scripts and Python/R Jupyter notebooks. Please set up a conda environment, install the packages listed in the `requirements.txt` file, and also install the R kernel for Jupyter notebook. Example commands:
 
 ```
+conda create --name=sei-manu python=3.6
 conda install jupyter
 conda install -c anaconda ipykernel
 python -m ipykernel install --user --name=sei-manu
 conda install -c r r-irkernel
-conda install --file requirements.txt -c bioconda -c pytorch
+conda install --file requirements.txt -c anaconda -c conda-forge -c bioconda -c pytorch -c intel
 ```
 
 Some of the python notebooks also call R with rpy2, therefore the R dependencies need to be installed. The R package dependencies are `data.table`, `ggplot2`, `ggrepel`, `patchwork`, `shades`, and `plyr`. 
