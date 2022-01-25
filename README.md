@@ -19,6 +19,8 @@ conda install --file requirements.txt -c anaconda -c conda-forge -c bioconda -c 
 
 Some of the python notebooks also call R with rpy2, therefore the R dependencies need to be installed. The R package dependencies are `data.table`, `ggplot2`, `ggrepel`, `patchwork`, `shades`, and `plyr`. 
 
+## Data
+
 Additionally, run
 
 ```
@@ -28,6 +30,24 @@ sh ./download_data.sh
 to get the data and resource files used in these analyses. **NOTE**: `download_data.sh` contains the commands to download data for ALL the analyses in this repository, which can total around 1TB or more. We have commented out all analysis-specific downloads by default, and highly recommend you review the memory requirements for each analysis in the `download_data.sh` file before deciding to download anything. 
 
 Each directory may also have its own README you should refer to before running any of the scripts/notebooks provided. 
+
+### Sequence Classes
+
+If you are interested in running the Sei framework on your own list of variants, you can refer to the [sei-framework](https://github.com/FunctionLab/sei-framework) repository. 
+
+We also provide some additional resources in [https://sei-files.s3.amazonaws.com/resources.tar.gz](https://sei-files.s3.amazonaws.com/resources.tar.gz) which can be used for reproducing or adapting the analyses we described in the manuscript. As mentioned earlier, you can refer to `download_data.sh` to get analysis-specific data files.
+
+The files in `resources`: 
+- Sei model: `sei.py`, `sei.pth`
+- Chromatin profiles: `sei_chromatin_profiles.txt` (`sei_profiles*.npy` are the NumPy-loadable versions of this file) 
+- Sequence class names: `cnames.tsv`
+- Computing sequence class scores (see methods): `histone_inds.npy` (histone normalization), projection `projvec_targets.npy`
+- Louvain community clustering sequence class assignments\*: `seqclass_louvain_wgt.npy` and corresponding coordinates `genome_coordinates.seqclass_louvain_wgt.txt`
+- Genome-wide sequence class annotations (hg38)\*: `hg38.seqclass_annotation.bed`
+
+\*Note: We provide the annotations for all 61 clusters output by Louvain community clustering. Our manuscript only focuses on the largest 40 sequence classes (see methods), but you can refer to Supplementary Figure 19 for an interpretation of clusters 40-61, which mostly have low enrichment or are enriched in repeats.   
+
+## Code for results/figures
 
 The directories correspond to the following figures/analyses:
 - `visualize_genome`: Visualization of human genome sequences across the whole-genome (Fig 1)
